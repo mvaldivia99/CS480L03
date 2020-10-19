@@ -1,165 +1,203 @@
-# !/usr/bin/python3
 import tkinter as tk
 from functools import partial
-#import compiler
 
-"""
+
+def foo():
+    print("foo")
+    
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.pack()
+        self.master.geometry("275x400")
         self.create_widgets()
-
+        
     def create_widgets(self):
-        self.hi_there = tk.Button(self)
-        self.hi_there["text"] = "Hello World\n(click me)"
-        self.hi_there["command"] = self.say_hi
-        self.hi_there.pack(side="top")
 
-        self.quit = tk.Button(self, text="QUIT", fg="red",
-                              command=self.master.destroy)
-        self.quit.pack(side="bottom")
+        appStr = tk.StringVar()
+        appLabel = tk.Label(self.master, textvariable=appStr, bg="white", width=25)
+        appLabel.place(x=20, y=25)
+        appStr.set("enter something")
 
-    def say_hi(self):
-        print("hi there, everyone!")
 
-root = tk.Tk()
-app = Application(master=root)
+        button_sin = tk.Button(self.master,
+                               text="sin",
+                               width=4,
+                               height=2,
+                               command=foo)
+        button_sin.place(x=20, y=60)
+
+        button_cos = tk.Button(self.master,
+                               text="cos",
+                               width=4,
+                               height=2,
+                               command=foo)
+        button_cos.place(x=65, y=60)
+
+        button_tan = tk.Button(self.master,
+                               text="tan",
+                               width=4,
+                               height=2,
+                               command=foo)
+        button_tan.place(x=110, y=60)
+
+
+        
+        button_pths = tk.Button(self.master,
+                               text="( )",
+                               width=4,
+                               height=2,
+                               command=foo)
+        button_pths.place(x=20, y=110)
+        
+        button_exp = tk.Button(self.master,
+                               text="^",
+                               width=4,
+                               height=2,
+                               command=foo)
+        button_exp.place(x=65, y=110)
+        
+        button_sqrt = tk.Button(self.master,
+                                text="sqrt",
+                                width=4,
+                                height=2,
+                                command=foo)
+        button_sqrt.place(x=110, y=110)
+        
+        button_clr = tk.Button(self.master,
+                               text="clear",
+                               width=4,
+                               height=2,
+                               command=foo)
+        button_clr.place(x=155, y=60)
+        
+        button_mult = tk.Button(self.master,
+                               text="x",
+                               width=4,
+                               height=2,
+                               command=foo)
+        button_mult.place(x=155, y=110)
+        
+        button_equals = tk.Button(self.master,
+                                  text="=",
+                                  width=4,
+                                  height=2,
+                                  command=foo)
+        button_equals.place(x=155, y=310)
+
+        button_divide = tk.Button(self.master,
+                                  text="/",
+                                  width=4,
+                                  height=2,
+                                  command=foo)
+        button_divide.place(x=155, y=160)
+        
+        button_plus = tk.Button(self.master,
+                                text="+",
+                                width=4,
+                                height=2,
+                                command=foo)
+        button_plus.place(x=155, y=260)
+
+        button_minus = tk.Button(self.master,
+                                 text="-",
+                                width=4,
+                                height=2,
+                                command=foo)
+        button_minus.place(x=155, y=210)
+
+        button_negPos = tk.Button(self.master,
+                             text="+/-",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_negPos.place(x=20, y=310)
+
+        button_decimal = tk.Button(self.master,
+                             text=".",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_decimal.place(x=110, y=310)
+                
+        self.button_9 = tk.Button(self.master,
+                                  text="9",
+                                  width=4,
+                                  height=2,
+                                  command=foo)
+        self.button_9.place(x=20, y=160)
+
+        button_8 = tk.Button(self.master,
+                             text="8",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_8.place(x=65, y=160)
+
+        button_7 = tk.Button(self.master,
+                             text="7",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_7.place(x=110, y=160)
+
+
+        button_4 = tk.Button(self.master,
+                             text="4",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_4.place(x=20, y=210)
+
+        button_5 = tk.Button(self.master,
+                             text="5",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_5.place(x=65, y=210)
+
+        button_6 = tk.Button(self.master,
+                             text="6",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_6.place(x=110, y=210)
+
+        button_1 = tk.Button(self.master,
+                             text="1",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_1.place(x=20, y=260)
+
+        button_2 = tk.Button(self.master,
+                             text="2",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_2.place(x=65, y=260)
+
+        button_3 = tk.Button(self.master,
+                             text="3",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_3.place(x=110, y=260)
+
+        button_0 = tk.Button(self.master,
+                             text="0",
+                             width=4,
+                             height=2,
+                             command=foo)
+        button_0.place(x=65, y=310)
+
+        
+
+        
+
+
+mainWindow = tk.Tk()
+app = Application(master=mainWindow)
 app.mainloop()
-
-
-def foo(thisButton):
-    print(thisButton)
-
-# main window frame
-window = tk.Tk()
-
-# add a button to window 
-button = tk.Button(window, text="9", command=partial(foo, "9"))
-button.place(x=0, y=0)
-
-#show input to user/enter input via keyboard?
-string = tk.StringVar()
-entry = tk.Entry(window, textvariable=string)
-entry.place(x=50, y=50)
-
-
-"""
-# parse 
-def foo():
-    print("foo now")
-
-# main window 
-window = tk.Tk()
-window.geometry("225x300")
-#window.maxsize(400, 400)
-
-# input box
-"""display_text = tk.StringVar()
-displayWndw = tk.Entry(window,
-                       width=100,
-                       textvariable=display_text)
-displayWndw.place(x=0, y=0)"""
-
-# number buttons
-#button_0 = tk.Button(window, text="0", command=foo)
-#button_0.place(x=0, y=0)
-#button_0.grid(column=5, row=5)
-
-#button_1 = tk.Button(window, text="1", command=foo)
-#button_2 = tk.Button(window, text="2", command=foo)
-#button_3 = tk.Button(window, text="3", command=foo)
-#button_4 = tk.Button(window, text="4", command=foo)
-#button_5 = tk.Button(window, text="5", command=foo)
-
-
-
-button_9 = tk.Button(window,
-                    text="9",
-                    width=4,
-                    height=2,
-                    command=foo)
-button_9.place(x=20, y=50)
-
-button_8 = tk.Button(window,
-                     text="8",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_8.place(x=65, y=50)
-
-button_7 = tk.Button(window,
-                     text="7",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_7.place(x=110, y=50)
-
-
-button_4 = tk.Button(window,
-                     text="4",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_4.place(x=20, y=105)
-
-button_5 = tk.Button(window,
-                     text="5",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_5.place(x=65, y=105)
-
-button_6 = tk.Button(window,
-                     text="6",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_6.place(x=110, y=105)
-
-button_1 = tk.Button(window,
-                     text="1",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_1.place(x=20, y=160)
-
-button_2 = tk.Button(window,
-                     text="2",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_2.place(x=65, y=160)
-
-button_3 = tk.Button(window,
-                     text="3",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_3.place(x=110, y=160)
-
-button_0 = tk.Button(window,
-                     text="0",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_0.place(x=65, y=210)
-
-button_negPos = tk.Button(window,
-                     text="+/-",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_negPos.place(x=20, y=210)
-
-button_decimal = tk.Button(window,
-                     text=".",
-                     width=4,
-                     height=2,
-                     command=foo)
-button_decimal.place(x=110, y=210)
-
-
 
 
