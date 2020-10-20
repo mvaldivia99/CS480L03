@@ -1,25 +1,40 @@
+# Michell Valdivia
+# CS 480 Lab 3
+
+
+# This file contains the UI for the calculator
+
 import tkinter as tk
-from functools import partial
+from MyParser import MyParser 
 
-
+# throwaway filler function to be changed
 def foo():
-    print("foo")
-    
+    print(foo)
+
+
 class Application(tk.Frame):
+    # set up the main window
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
         self.master.geometry("275x400")
-        self.create_widgets()
+        self.mathParser = MyParser()
+        self.create_widgets()        
         
     def create_widgets(self):
 
+        # set up the entry, where user input will be captured
         appStr = tk.StringVar()
-        appLabel = tk.Label(self.master, textvariable=appStr, bg="white", width=25)
-        appLabel.place(x=20, y=25)
-        appStr.set("enter something")
+        appEntry = tk.Entry(self.master)
+        appEntry.place(x=20, y=25)
 
+        # for user validation
+        # If the call was due to an insertion or deletion
+        # %S argument will be the text being inserted or deleted.
+        reg = self.master.register(self.mathParser.callback)
+        appEntry.config(validate="key", validatecommand=(reg, '%S'))
 
+        # set up the calculator buttons inside the main window
         button_sin = tk.Button(self.master,
                                text="sin",
                                width=4,
@@ -191,9 +206,7 @@ class Application(tk.Frame):
                              command=foo)
         button_0.place(x=65, y=310)
 
-        
-
-        
+                
 
 
 mainWindow = tk.Tk()
