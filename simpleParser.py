@@ -2,13 +2,15 @@
 # four basic math functions, parentheses, and variables.
 # Adapted from https://nerdparadise.com/programming/parsemathexpr
 
+import math
+
 class Parser:
     def __init__(self, string, vars={}):
         self.string = string
         self.index = 0
         self.vars = {
-            'pi' : 3.141592653589793,
-            'e' : 2.718281828459045
+            'pi' : math.pi,
+            'e' : math.e
             }
         for var in vars.keys():
             if self.vars.get(var) != None:
@@ -81,6 +83,7 @@ class Parser:
         for factor in values:
             value *= factor
         return value
+
     
     def parseParenthesis(self):
         self.skipWhitespace()
@@ -114,6 +117,11 @@ class Parser:
             return self.parseNumber()
         else:
             return self.parseVariable()
+
+    def parseMathFunc(self, funcType):
+        mathFunSubStr = self.string[self.index + 1:]
+        closingPths = mathFunSubStr.find(")") 
+
     
     def parseVariable(self):
         self.skipWhitespace()
@@ -125,9 +133,17 @@ class Parser:
                 self.index += 1
             else:
                 break
-        
         value = self.vars.get(var, None)
-        if value == None:
+        
+        if var == 'sin':
+            return math.sin(self.parseMultiplication())
+        elif var == 'tan':
+            return math.tan(self.parseMultiplication())
+        elif var == 'cos':
+            return math.cos(self.parseMultiplication())
+        elif var == 'ln':
+            return math.log(self.parseMultiplication())
+        elif value == None:
             raise Exception(
                 "Unrecognized variable: '" +
                 var +
@@ -194,3 +210,4 @@ def evaluate(expression, vars={}):
     
     return value
 
+print(evaluate("-5.78 + -(4 - 2.23) + sin(0) * cos(1) / 1 + tan(2 * ln(-3 + 2 * (1.23 + 99.111)))"))

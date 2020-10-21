@@ -97,7 +97,7 @@ class Application(tk.Frame):
         button_pths2 = tk.Button(self.master,
                                text=")",
                                height=2,
-                               command=partial(self.buttonText, ")")) #--------PARANTHESES---------
+                               command=partial(self.buttonText, ")"))
         button_pths2.place(x=40, y=110)
         
         
@@ -119,7 +119,7 @@ class Application(tk.Frame):
                                text="clear",
                                width=4,
                                height=2,
-                               command=self.clear) #----CLEAR FUNCTION----
+                               command=self.clear)
         button_clr.place(x=155, y=60)
         
         button_mult = tk.Button(self.master,
