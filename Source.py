@@ -13,11 +13,12 @@ class Application(tk.Frame):
         super().__init__(master)
         self.master = master
         self.master.geometry("275x400")
+        self.master.title("Lab 03: Calculator")
         #mathParser = MyParser()
 
         # set up the entry, where user input will be captured
         self.appStr = tk.StringVar()
-        self.appEntry = tk.Entry(self.master, textvariable=self.appStr)
+        self.appEntry = tk.Entry(self.master, textvariable=self.appStr, width=27, font=("Calibri 12"))
         self.appEntry.place(x=20, y=25)
 
         # for user validation
