@@ -16,16 +16,12 @@ class Parser:
             if self.vars.get(var) != None:
                 raise Exception("Cannot redefine the value of " + var)
             self.vars[var] = vars[var]
-    
+
+
     def getValue(self):
         value = self.parseExpression()
         self.skipWhitespace()
-        if self.hasNext():
-            raise Exception(
-                "Unexpected character found: '" +
-                self.peek() +
-                "' at index " +
-                str(self.index))
+                
         return value
     
     def peek(self):
@@ -42,6 +38,15 @@ class Parser:
                 return
     
     def parseExpression(self):
+
+        expo = self.string.find('^')
+        
+        if (expo != -1):
+            expressions = self.string.split('^')
+            return math.pow(Parser(expressions[0]).getValue(),
+                            Parser(expressions[1]).getValue())
+            
+         
         return self.parseAddition()
     
     def parseAddition(self):
