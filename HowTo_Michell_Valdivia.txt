@@ -1,0 +1,30 @@
+CS 480 Lab 03: Calculator
+Created by Michell Valdivia
+Github repository: https://github.com/mvaldivia99/CS480L03
+Parser adapted from the following website: https://nerdparadise.com/programming/parsemathexpr
+-----------------------------------------------------------------------------------------------
+Requirements:
+- Python 3.8
+-----------------------------------------------------------------------------------------------
+To start calculator,
+
+In Linux:
+1. Open a terminal in the directory or navigate in the terminal to the directory 
+   where Source.py is located. 
+2. In terminal enter the following command: 
+	$ python3 Source.py
+
+In Windows 10:
+1. Open command line and navigate to directory were Source.py is located.
+2. In the command line enter the following command:
+        > py Source.py
+
+
+A successful start will show a GUI of a calculator.
+-----------------------------------------------------------------------------------------------
+To use the caculator:
+
+Click buttons to enter a mathematical expression. Keyboard input is also allowed, but limits 
+the kind of characters one can enter. To evaluate an expression use the button with the equals 
+"=" sign.If an expression contains an open paranthesis "(", then a corresponding closing 
+parenthesis ")" is required.
