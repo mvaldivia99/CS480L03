@@ -5,10 +5,6 @@
 import tkinter as tk
 import simpleParser
 from functools import partial
-
-# throwaway filler function to be changed
-def foo():
-    print(foo)
         
 class Application(tk.Frame):
     # set up the main window
@@ -31,16 +27,19 @@ class Application(tk.Frame):
         self.appEntry.config(validate="key", validatecommand=(self.reg, '%S'))
 
     # keyboard input validation
-    # does not allow for trig or sqrt functions
     def callback(self, a):
-        print(a)
+
+        letterInput = ["", "s", "i", "n", "c", "o", "t", "a", "q",
+                       "r", "l", "p", "g", "e"]
+
+        #print(a)
         if a.isdigit():
             return True
         elif a == "*" or a == "+" or a == "-" or a == "/":
             return True
         elif a == "." or a == ")" or a == "(":
             return True
-        elif a == "":
+        elif a in letterInput:
             return True
         else:
             return False
@@ -50,18 +49,23 @@ class Application(tk.Frame):
         currStr = self.appEntry.get()
         currStr = currStr + text
         self.appStr.set(currStr)
-        print(self.appEntry.get())       
+        #print(self.appEntry.get())       
 
     # called on clicking enter 
     def mathEval(self):
         currStr = self.appEntry.get()
         answer = simpleParser.evaluate(currStr)
-        self.appStr.set(answer)
-        print(answer)
+        
+        if answer == None:
+            self.appStr.set("<Error Encountered>")
+        else:
+            self.appStr.set(answer)
+
+        #print(answer)
         
     def clear(self):
         self.appStr.set("")
-        print("cleared")
+        #print("cleared")
         
     def create_widgets(self):       
         # set up the calculator buttons inside the main window
@@ -69,21 +73,21 @@ class Application(tk.Frame):
                                text="sin",
                                width=4,
                                height=2,
-                               command=partial(self.buttonText, "sin(")) #-----TRIG------
+                               command=partial(self.buttonText, "sin(")) 
         button_sin.place(x=20, y=60)
 
         button_cos = tk.Button(self.master,
                                text="cos",
                                width=4,
                                height=2,
-                               command=partial(self.buttonText, "cos(")) #-----TRIG------
+                               command=partial(self.buttonText, "cos(")) 
         button_cos.place(x=65, y=60)
 
         button_tan = tk.Button(self.master,
                                text="tan",
                                width=4,
                                height=2,
-                               command=partial(self.buttonText, "tan(")) #-----TRIG------
+                               command=partial(self.buttonText, "tan(")) 
         button_tan.place(x=110, y=60)
 
 
@@ -91,7 +95,7 @@ class Application(tk.Frame):
         button_pths1 = tk.Button(self.master,
                                text="(",
                                height=2,
-                               command=partial(self.buttonText, "(")) #--------PARANTHESES---------
+                               command=partial(self.buttonText, "(")) 
         button_pths1.place(x=20, y=110)
 
         button_pths2 = tk.Button(self.master,
@@ -116,11 +120,36 @@ class Application(tk.Frame):
         button_sqrt.place(x=110, y=110)
         
         button_clr = tk.Button(self.master,
-                               text="clear",
+                               text="cot",
                                width=4,
                                height=2,
-                               command=self.clear)
+                               command=partial(self.buttonText, "cot("))
         button_clr.place(x=155, y=60)
+
+
+        button_ln = tk.Button(self.master,
+                               text="ln",
+                               width=4,
+                               height=2,
+                               command=partial(self.buttonText, "ln("))
+        button_ln.place(x=200, y=60)
+
+        button_log = tk.Button(self.master,
+                               text="log",
+                               width=4,
+                               height=2,
+                               command=partial(self.buttonText, "log("))
+        button_log.place(x=200, y=110)
+
+
+        button_clr = tk.Button(self.master,
+                               text="clear",
+                               width=4,
+                               height=12,
+                               command=self.clear)
+        button_clr.place(x=200, y=160)
+
+        
         
         button_mult = tk.Button(self.master,
                                text="x",
@@ -168,7 +197,7 @@ class Application(tk.Frame):
                              text=".",
                              width=4,
                              height=2,
-                             command=partial(self.buttonText, ".")) #---DECIMAL-----
+                             command=partial(self.buttonText, ".")) 
         button_decimal.place(x=110, y=310)
                 
         self.button_9 = tk.Button(self.master,

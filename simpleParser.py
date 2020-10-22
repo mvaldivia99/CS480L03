@@ -1,5 +1,3 @@
-# A really simple expression evaluator supporting the
-# four basic math functions, parentheses, and variables.
 # Adapted from https://nerdparadise.com/programming/parsemathexpr
 
 import math
@@ -148,6 +146,12 @@ class Parser:
             return math.cos(self.parseMultiplication())
         elif var == 'ln':
             return math.log(self.parseMultiplication())
+        elif var == 'cot':
+            return 1 / (math.tan(self.parseMultiplication()))
+        elif var == 'log':
+            return math.log10(self.parseMultiplication())
+        elif var == 'sqrt':
+            return math.sqrt(self.parseMultiplication())
         elif value == None:
             raise Exception(
                 "Unrecognized variable: '" +
@@ -212,7 +216,7 @@ def evaluate(expression, vars={}):
         return int(value + epsilon)
     elif int(value - epsilon) != int(value):
         return int(value)
-    
+
     return value
 
-print(evaluate("-5.78 + -(4 - 2.23) + sin(0) * cos(1) / 1 + tan(2 * ln(-3 + 2 * (1.23 + 99.111)))"))
+
